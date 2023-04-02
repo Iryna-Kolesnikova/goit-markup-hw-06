@@ -31,6 +31,19 @@ ul {
 button {
   cursor: pointer;
 }
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  border: 0;
+  padding: 0;
+
+  white-space: nowrap;
+  clip-path: inset(100%);
+  clip: rect(0 0 0 0);
+  overflow: hidden;
+}
 /*============= variables================== */
 :root {
   --brand-color: #4d5ae5;
@@ -44,6 +57,7 @@ button {
   --card-color: #ffffff;
   --footer-bg-btn: #31d0aa;
   --icon-color: #8e8f99;
+  --color-fc: #fcfcfc;
   --shadow-color: 0px 1px 6px rgba(46, 47, 66, 0.08),
     0px 1px 1px rgba(46, 47, 66, 0.16), 0px 2px 1px rgba(46, 47, 66, 0.08);
   --timing-funktion: 250ms cubic-bezier(0.4, 0, 0.2, 1);
@@ -555,6 +569,56 @@ button {
 .footer-soc-icon {
   fill: var(--logo-footer-color);
 }
+.footer-subscribe {
+  margin-left: 80px;
+}
+.subscribe-text {
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 24px;
+  letter-spacing: 0.02em;
+  color: var(--card-color);
+  margin-bottom: 16px;
+}
+.subskribe-input {
+  width: 264px;
+  height: 40px;
+  border: 1px solid var(--card-color);
+  color: var(--card-color);
+  border-radius: 4px;
+  background-color: transparent;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 24px;
+  letter-spacing: 0.04em;
+  padding-left: 16px;
+  margin-right: 24px;
+}
+
+.subscribe-btn {
+  width: 165px;
+  height: 40px;
+  background: var(--brand-color);
+  border-radius: 4px;
+  border: 1px solid var(--brand-color);
+  letter-spacing: 0.04em;
+  color: var(--hero-color);
+  padding: 8px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  transition: border var(--timing-funktion), background var(--timing-funktion);
+}
+.subscribe-btn:hover,
+.subscribe-btn:focus {
+  background: var(--hover-color);
+  border: 1px solid var(--hover-color);
+}
+
+.subscribe-wrap {
+  display: flex;
+}
 /* ============================MODAL WINDOW============================= */
 .backdrop-it {
   position: fixed;
@@ -577,13 +641,14 @@ button {
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%) scale(1);
   width: 408px;
-  height: 576px;
-  background-color: #fcfcfc;
+  height: 584px;
+  background-color: var(--color-fc);
   box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.14), 0px 1px 3px rgba(0, 0, 0, 0.12),
     0px 2px 1px rgba(0, 0, 0, 0.2);
   border-radius: 4px;
+  padding: 72px 24px 24px;
 }
 .modal-close-btn {
   position: absolute;
@@ -592,8 +657,7 @@ button {
   display: flex;
   justify-content: center;
   align-items: center;
-
-  background-color: #e7e9fc;
+  background-color: var(--last-color);
   border: 1px solid rgba(0, 0, 0, 0.1);
   padding: 0;
   width: 24px;
@@ -602,15 +666,137 @@ button {
   transition: background-color var(--timing-funktion);
 }
 .btn-close-icon {
-  fill: #2e2f42;
+  fill: var(--brand-lite-color);
   transition: fill var(--timing-funktion);
 }
 
 .modal-close-btn:hover,
 .modal-close-btn:focus {
-  background-color: #404bbf;
+  background-color: var(--hover-color);
 }
 .modal-close-btn:hover .btn-close-icon,
 .modal-close-btn:focus .btn-close-icon {
-  fill: #ffffff;
+  fill: var(--card-color);
+}
+.modal-title {
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 24px;
+  text-align: center;
+  letter-spacing: 0.02em;
+  color: var(--brand-lite-color);
+  width: 360px;
+  margin-bottom: 16px;
+}
+.modal-input {
+  width: 100%;
+  height: 40px;
+  border: 1px solid rgba(33, 33, 33, 0.2);
+  border-radius: 4px;
+  outline: transparent;
+  background-color: transparent;
+  padding-left: 34px;
+  transition: border-color var(--timing-funktion), fill var(--timing-funktion);
+}
+.modal-input:focus {
+  border-color: var(--brand-color);
+}
+.modal-input:focus + .modal-input-icon {
+  fill: var(--brand-color);
+}
+.modal-send-btn {
+  display: block;
+  width: 169px;
+  height: 56px;
+  background-color: var(--brand-color);
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
+  border-radius: 4px;
+  color: var(--card-color);
+  letter-spacing: 0.04em;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 24px;
+  margin: 0 auto;
+  border: var(--brand-color);
+  transition: border var(--timing-funktion),
+    background-color var(--timing-funktion);
+}
+.modal-send-btn:hover,
+.modal-send-btn:focus {
+  background-color: var(--hover-color);
+  border: var(--hover-color);
+}
+.label-name {
+  display: inline-block;
+  font-size: 12px;
+  line-height: 14px;
+  letter-spacing: 0.04em;
+  color: var(--icon-color);
+  margin-bottom: 4px;
+}
+.modal-field {
+  margin-bottom: 8px;
+}
+.input-wrap {
+  position: relative;
+}
+.modal-input-icon {
+  position: absolute;
+  left: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.text-comment {
+  width: 100%;
+  height: 120px;
+  border-radius: 4px;
+  outline: transparent;
+  background-color: transparent;
+  resize: none;
+  padding-left: 16px;
+  font-size: 12px;
+  line-height: 1.33;
+  letter-spacing: 0.04em;
+  color: var(--body-color);
+  border: 1px solid rgba(33, 33, 33, 0.2);
+  transition: border var(--timing-funktion);
+}
+
+.text-comment:focus {
+  border: 1px solid var(--hover-color);
+}
+.check-icon-wind {
+  display: flex;
+  width: 16px;
+  height: 16px;
+  border-radius: 2px;
+  border: 1px solid var(--brand-lite-color);
+  display: flexbox;
+  align-items: center;
+  justify-content: center;
+  fill: transparent;
+}
+
+.modal-check:checked + .check-text span {
+  background-color: var(--hover-color);
+  border: none;
+  fill: var(--btn-color);
+}
+
+.check-text {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 14px;
+  letter-spacing: 0.04em;
+  color: var(--icon-color);
+  margin-top: 16px;
+  margin-bottom: 24px;
+  gap: 8px;
+  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1),
+    fill var(--timing-funktion);
 }
